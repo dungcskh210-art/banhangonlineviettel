@@ -10,6 +10,8 @@ index.html        Trang chính
 config.js         Tên trợ lý AI và các đường link nút bấm  ← sửa ở đây
 assets/style.css  Kiểu chữ, hiển thị trên điện thoại
 assets/main.js    Gắn tên trợ lý, gắn link, thông báo "Sắp ra mắt"
+assets/content.js Nội dung Hỏi thử, Chọn vai trò, Trắc nghiệm  ← sửa chữ ở đây
+assets/interact.js Xử lý các phần tương tác (không cần sửa)
 assets/favicon.svg
 vercel.json       Cấu hình Vercel (header bảo mật, chặn công cụ tìm kiếm)
 robots.txt        Chặn công cụ tìm kiếm (trang nội bộ)
@@ -45,6 +47,17 @@ git push -u origin main
 - **Đổi tên trợ lý** (Tammi → KIRA): sửa `assistantName` trong `config.js`.
 - **Gắn link thật cho các nút**: điền `links.web`, `links.mbccs`, `links.zalo` trong `config.js`. Để trống thì nút hiện "Sắp ra mắt".
 - **Cho phép Google tìm thấy trang**: xoá thẻ `robots` trong `index.html`, dòng `X-Robots-Tag` trong `vercel.json` và file `robots.txt`.
+
+## Phần tương tác
+
+- **Hỏi thử Tammi**: 6 câu hỏi mẫu, câu trả lời soạn sẵn (không gọi AI thật). Sửa trong `assets/content.js` → `demo`.
+- **Chọn vai trò**: 6 vai trò, mỗi vai trò có nhu cầu, 3 lợi ích, nơi dùng và một thẻ mẫu. Sửa → `roles`.
+- **Trắc nghiệm "Bạn hiểu kho 198 đến đâu?"**: 5 câu. Sửa → `quiz` (`answer` là vị trí đáp án đúng, đếm từ 0).
+- Số liệu chạy khi cuộn tới, nút Tammi nổi ở góc phải.
+
+## Đo lường lượt tương tác
+
+Trong Vercel: Project → **Analytics** → Enable. Trang đã gắn sẵn sự kiện `demo_ask`, `role_select`, `quiz_done` (kèm điểm), `fab_click`. Đếm theo sự kiện riêng cần gói Vercel Pro; gói miễn phí vẫn đếm được lượt xem trang.
 
 ## Lưu ý
 
